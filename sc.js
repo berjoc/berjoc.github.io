@@ -99,12 +99,12 @@ function mkPizza(){
     document.getElementById("ing_oil").innerHTML = `${total_oil.toFixed(1)} g`;
     document.getElementById("ing_eggyolk").innerHTML = `${total_eggyolk.toFixed(1)} g`;
 
-    document.getElementById("sauce_light").innerHTML = `${sauce_light.toFixed(1)} g`;
-    document.getElementById("sauce_medium").innerHTML = `${sauce_medium.toFixed(1)} g`;
-    document.getElementById("sauce_heavy").innerHTML = `${sauce_heavy.toFixed(1)} g`;
-    document.getElementById("cheese_light").innerHTML = `${cheese_light.toFixed(1)} g`;
-    document.getElementById("cheese_medium").innerHTML = `${cheese_medium.toFixed(1)} g`;
-    document.getElementById("cheese_heavy").innerHTML = `${cheese_heavy.toFixed(1)} g`;
+    document.getElementById("sauce_light").innerHTML = `${sauce_light.toFixed(0)} g`;
+    document.getElementById("sauce_medium").innerHTML = `${sauce_medium.toFixed(0)} g`;
+    document.getElementById("sauce_heavy").innerHTML = `${sauce_heavy.toFixed(0)} g`;
+    document.getElementById("cheese_light").innerHTML = `${cheese_light.toFixed(0)} g (${(2.0*cheese_light/3.0).toFixed(0)} g mozzarella, ${(cheese_light/3.0).toFixed(0)} g annen ost)`;
+    document.getElementById("cheese_medium").innerHTML = `${cheese_medium.toFixed(0)} g (${(2.0*cheese_medium/3.0).toFixed(0)} g mozzarella, ${(cheese_medium/3.0).toFixed(0)} g annen ost)`;
+    document.getElementById("cheese_heavy").innerHTML = `${cheese_heavy.toFixed(0)} g (${(2.0*cheese_heavy/3.0).toFixed(0)} g mozzarella, ${(cheese_heavy/3.0).toFixed(0)} g annen ost)`;
 
     document.getElementById("recipe").style.display = '';
 }
