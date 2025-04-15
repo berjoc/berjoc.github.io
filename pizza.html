@@ -1,0 +1,173 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Pizzaoppskrift</title>
+        <link rel="stylesheet" href="default.css" />
+        <script src="sc.js"></script>
+    </head>
+    <body onload="pizza_onLoad()">
+        <h1>Norsk restaurantpizza</h1>
+        <p style="font-size: 1em">Denne oppskriften gir en pizza ala typen som serveres i norske pizzarestauranter av høy kvalitet. Minner mye om "Bar Pizza" fra USA.</p>
+        <br />
+        <div id="inputs">
+            <label for="shape" class="col1">Form: </label>
+            <select id="shape" class="col2" onchange="pizza_changeShape()">
+                <option value="round">Rund</option>
+                <option value="rect">Firkantet</option>
+            </select>
+            <select id="edge" class="col2" onchange="mkPizza()">
+                <option value="straight">Rette kanter</option>
+                <option value="slanted">Skr&aring; kanter</option>
+            </select>
+            
+            <label for="diameter" class="col1" id="lbl_diameter">Diameter (cm): </label>
+            <input type="number" class="col2" value="30" id="diameter" oninput="mkPizza()" />
+            <label for="length" class="col1" id="lbl_length">Lengde (cm): </label>
+            <input type="number" class="col2" value="30" id="length" oninput="mkPizza()" />
+            <label for="width" class="col1" id="lbl_width">Bredde (cm): </label>
+            <input type="number" class="col2" value="20" id="width" oninput="mkPizza()" />
+            <p class="colboth small">Viktig: Mål på bunnen / undersiden av formen.</p>
+            <label for="count" class="col1" id="lbl_count">Antall: </label>
+            <input type="number" class="col2" value="3" id="count" oninput="mkPizza()" />
+            <p></p>
+        </div>
+        <div id="recipe">
+            <p class="col1">Vekt per deigball</p><p class="col2r" id="doughball_weight"></p>
+            <hr />
+            <p class="colboth" id="num_doughballs">Ingredienser for deigballer</p>
+            <hr />
+            <p class="col1">Mel</p><p class="col2r" id="ing_flour"></p>
+            <hr />
+            <p class="col1">Vann</p><p class="col2r" id="ing_water"></p>
+            <hr />
+            <p class="col1">Salt</p><p class="col2r" id="ing_salt"></p>
+            <hr />
+            <p class="col1">Sukker</p><p class="col2r" id="ing_sugar"></p>
+            <p class="col1">Sukkermengde: </p>
+            <select id="sugar_amount" class="col2" onchange="mkPizza()">
+                <option value="normal">Normal</option>
+                <option value="extra">Ekstra</option>
+                <option value="none">Ingen</option>
+            </select>
+            <hr />
+            <p class="col1">Fersk gj&aelig;r</p><p class="col2r" id="ing_yeast"></p>
+            <hr />
+            <p class="col1">Olje</p><p class="col2r" id="ing_oil"></p>
+            <hr />
+            <p class="col1">Eggeplomme</p><p class="col2r" id="ing_eggyolk"></p>
+            <hr />
+            <p class="colboth">Anbefalte mengder topping (per pizza)</p>
+            <hr />
+            <p class="col1">Saus (lite)</p><p class="col2r" id="sauce_light"></p>
+            <hr />
+            <p class="col1">Saus (normal)</p><p class="col2r" id="sauce_medium"></p>
+            <hr />
+            <p class="col1">Saus (ekstra mye)</p><p class="col2r" id="sauce_heavy"></p>
+            <hr />
+            <p class="col1">Ost (lite)</p><p class="col2r" id="cheese_light"></p>
+            <hr />
+            <p class="col1">Ost (normal)</p><p class="col2r" id="cheese_medium"></p>
+            <hr />
+            <p class="col1">Ost (ekstra mye)</p><p class="col2r" id="cheese_heavy"></p>
+        </div>
+        <br />
+        <div id="inputs">
+            <p class="colboth">Ingredienser</p>
+        </div>
+        <br />
+        <div id ="recipesteps">
+            <p>Hvetemel: Bruk vanlig siktet hvetemel (12% protein) fra butikken. Unngå mel med høyt gluteninnhold.</p>
+            <p>Vann: Vannet må være iskaldt (maks 4°C) for at deigen ikke skal bli for varm under elting.</p>
+            <p>Gjær: Idun fersk blå.</p>
+            <p>Salt: Vanlig bordsalt. Med / uten jod har ingen betydning.</p>
+            <p>Sukker: Vanlig hvitt sukker, justerer bruningen. Mer sukker = brunere resultat.</p>
+            <p>Olje: Extra virgin olivenolje, evt. nøytral matolje.</p>
+            <p>Tomatsaus: Mutti Pizza Sauce Aromatica (eller etter eget ønske). Hvit pizzasaus kan også brukes.</p>
+            <p>Ost: 66% av osten må være mozzarella. Den ferdig revne av Coops eget merke gir best resultat for pengene. Den siste tredjedelen av osten bør være en smaksrik ost, f.eks. Tine Østavind. Bland ostene jevnt før du drysser de på bunnen.</p>
+        </div>
+        <br />
+        <div id="inputs">
+            <p class="colboth">Fremgangsmåte</p>
+        </div>
+        <div id ="recipesteps">
+            <p>Mål opp alle ingredienser på forhånd. Bruk en nøyaktig kjøkkenvekt. Desimalvisning er viktig, ihvertfall for små deiger. Følg oppskriften nøyaktig, alle deler av fremgangsmåten samt rekkefølgen ting gjøres i er viktig. Bruk iskaldt vann (under 4 grader), sett evt vann i fryseren en stund hvis du ikke har. Når det fryser et lokk på vannet er det kaldt nok. </p>
+            <p>OBS: En del vann fordamper i fryseren, avkjøl vannet før du måler opp, og kjøl ned mer enn du trenger.</p>
+        </div>
+        <br />
+        <div id ="recipesteps">
+            <p>Ha vann, salt, sukker og eggeplomme i bakebollen og bland lett med en visp eller gaffel. Ha i melet slik at det legger seg oppå væsken, men ikke bland. Smuldre gjæren i små biter og strø det oppå melet.</p>
+            <p>Start en stoppeklokke og start kjøkkenmaskinen (med eltekrok) på lav hastighet.</p>
+        </div>
+        <br />
+        <div id ="recipesteps">
+            <p>Når stoppeklokken har gått 1 minutt har du i oljen litt og litt.</p>
+            <p>Når oljen er godt blandet i deigen økes hastigheten på kjøkkenmaskinen til middels hastighet.</p>
+        </div>
+        <br />
+
+        <div id ="recipesteps">
+            <p>Følg med under eltingen så ikke deigen kleber seg til kroken eller bollen, hjelp evt til litt slik at deigen eltes godt. Hvis maskinen tåler det kan du øke hastigheten så mye at deigen kastes av kroken, evt pulse maskinen på høyere hastighet.</p>
+            <p>Deigen skal eltes til den er glatt og jevn og stoppeklokka viser 12 - 15 minutter. Hvis deigen fortsatt virker litt kornete eller grov, elt lenger. Deigen vil være ganske våt og klissete når den er ferdig.</p>
+        </div>
+        <br />
+        <div id ="recipesteps">
+            <p>Hvis du sliter med at deigen ikke vil bli til en deig og det bare blir en røre kan du holde igjen 1 - 2 spiseskjeer av vannet til å begynne med. Tilsett dette vannet etter at deigen har eltet i ca fem minutter. Det kan være du må hjelpe kjøkkenmaskinen litt for å få blandet inn det siste vannet.</p>
+            <p>En annen mulighet er å bytte ut litt av vannet med isbiter, det skal da brukes samme vekt med vann + isbiter som med bare vann. Isbitene vil smelte sakte under eltingen og slippe litt og litt vann, så unngår man problemet med at deigen blir for våt før den er eltet.</p>
+            <p>For å redde en deig du ikke får eltet, ta fire stykk "strekk og brett" (stretch and fold) med 15 minutters mellomrom den første timen deigen står i kjøleskapet. Google hvis du ikke kjenner teknikken.</p>
+         </div>
+        <br />
+        
+        <div id ="recipesteps">
+            <p>Fortsett å la stoppeklokka gå når kjøkkenmaskinen er stoppet. Samle deigen i en ball i bollen og spray / pensle et tynt lag olje på.</p>
+            <p>Dekk bollen med plast og la den stå i romtemperatur til stoppeklokka viser 30 minutter.</p>
+        </div>
+        <br />
+        <div id ="recipesteps">
+            <p>Sett bollen i kjøleskap når stoppeklokka viser 30 minutter, klokka kan nå stoppes for godt. Hvis deigen er over 1kg bør deigen deles i to for å sikre at nedkjølingen i kjøleskapet går raskt nok, og at den ikke overhever i kjøleskapet.</p>
+            <p>Ha isåfall hver deig i hver sin bolle, med litt olje på, og plast på bollen. Oljen er en ekstra barriere mot uttørking mens deigen står på kjøl. Deigen må stå minst 6 timer i kjøleskap og kan stå opptil 3 døgn.</p>
+        </div>
+        <br />
+        <div id ="recipesteps">
+            <p>Smør stekeformene med meierismør eller annet fast fett. Ikke bruk olje. Fast fett gjør at deigen lett kan trykkes ut i stekeformen uten at den trekker seg sammen. Vær spesielt nøye med å smøre langs kanten og oppetter veggene på stekeformene.</p>
+            <p>Ta deigen ut av kjøleskapet. Del deigen opp i biter av riktig størrelse og <a href="https://www.youtube.com/shorts/z2sBPZwqry8">form baller.</a> Jobb mens deigen er kald og bruk olje på fingrer og redskap for å unngå for mye kliss.</p>
+        </div>
+        <br />
+        <div id ="recipesteps">
+            <p>Legg deigballene i senter av stekeformene med sømmen på ballen ned.</p>
+            <p>Trykk deigballene ut til jevn tykkelse fra senter og ut. Senter av deigen kan godt være litt tynnere enn resten. Deigen skal gå helt til kanten.</p>
+        </div>
+        <br />
+        <div id ="recipesteps">
+            <p>Dekk stekeformene med plast, og la dem etterheve i romtemperatur i ca 2 timer. De tåler godt å stå litt lenger også.</p>
+            <p>Rigg stekeovn med pizzastål eller stein på nederste trinn og sett stekeovnen på ca 240 grader over- og undervarme. Det tar lang tid å varme opp stålet / steinen, typisk minst 1.5 - 2 timer, så la gjerne ovnen stå på mens pizzaene etterhever. </p>
+        </div>
+        <br />
+        <div id ="recipesteps">
+            <p>Om du ikke har stein eller stål, senk temperaturen til 220 grader og øk steketiden med 3 - 5 minutter. Det er også mulig å steke langpannepizza direkte med denne metoden, men bunnen blir best om det brukes pizzastål eller -stein. Man kan også prøve seg frem med pizzafunksjon eller varmluft om ovnen har dette, min ovn har begge men gir best resultat med pizzastål + over- og undervarme.</p>
+        </div>
+        <br />
+        <div id ="recipesteps">
+            <p>Saus og ost i Medium mengde gir en fyldig pizza med rikelig ost. Mengde Ekstra mye gir en meget sausete pizza og maksimal mengde ost som er mulig å fortsatt få en gjennomstekt bunn med. oppinger. Det er mulig å ha på ekstra pizzasaus ved servering på samme måte som rømmedressing eller annen toppingsaus.</p>
+        </div>
+        <br />
+        <div id ="recipesteps">
+            <p>Smør pizzabunnene med tomatsaus, et jevnt lag helt til kanten. De foreslåtte mengdene med saus og ost i oppskriften er for en pizza med saus og ost helt ut til kanten, dvs ingen skorpe. Vær forsiktig når du tar på sausen så du ikke trykker ut luften av deigen.</p>
+            <p>Saus og ost i Medium mengde gir en fyldig pizza med rikelig ost. Mengde Ekstra mye gir en meget sausete pizza og maksimal mengde ost som er mulig å fortsatt få en gjennomstekt bunn med. Vurder å bruke Lite saus hvis du skal kjøre Ekstra mye ost. Det er mulig å ha på ekstra pizzasaus ved servering på samme måte som rømmedressing eller annen toppingsaus.</p>
+            <p>Strø gjerne på et tynt lag med finrevet parmesanost og et tynt lag med pizzakrydder (anbefaler Hindu) oppå sausen for ekstra krydret smak. Dersom du ikke liker tydelig kryddersmak på pizzaen sløyfer du pizzakrydderet.</p>
+        </div>
+        <br />
+        <div id ="recipesteps">
+            <p>Ha på ost og andre toppinger. Ha osten helt ut i kanten som med tomatsausen. Dersom det benyttes rikelig med vannholdige toppinger (paprika, tomat osv) bør man unngå "Ekstra mye" saus/ost for å ikke få problemer med rå pizzabunn etter steking. Evt kan toppingene freses raskt i en panne på forhånd for å drive ut litt vann.</p>
+        </div>
+        <br />
+        <div id ="recipesteps">
+            <p>Stek pizzaen i 10 - 12 minutter avhengig av ovn og størrelse på pizzaen (større pizza = lengre steketid). For veldig store pizzaer (langpanne) kan man måtte steke enda lenger (14 - 15 min).</p>
+            <p>Dersom ovnen steker litt ujevnt kan det være en fordel å rotere stekeformen 180 grader når det er 2 - 4 minutter igjen av steketiden.</p>
+        </div>
+        <br />
+        <div id ="recipesteps">
+            <p>Bruk stekespade og løsne pizzaen fra stekeformen langs kanten. Er det umulig å få ut pizzaen har du enten smørt den for dårlig, eller så er formen ikke egnet for pizzasteking. Hvelv pizzaen ut av formen og over på rist for avkjøling så fort som mulig. Avkjøl minst 3 minutter for å unngå å brenne ganen.</p>
+            <p>Del opp og spis.</p>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,145 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Subway oppskrift</title>
+        <link rel="stylesheet" href="default.css" />
+        <script src="sc.js"></script>
+    </head>
+    <body onload="subw_onLoad()">
+        <h1>Subway kopibrød</h1>
+        <div id="inputs">
+            <label for="size" class="col1">Deigball vekt: </label>
+            <select id="size" class="col2" onchange="subw_changeSize()">
+                <option value="standard">Standard (280g)</option>
+                <option value="large">Ekstra stor (310g)</option>
+                <option value="custom">Egendefinert</option>
+            </select>
+            
+            <label for="custom_size" class="col1" id="lbl_custom_size">Vekt per brød (g): </label>
+            <input type="number" class="col2" value="280" id="custom_size" oninput="mkSubway()" />
+
+            <label for="count" class="col1" id="lbl_count">Antall: </label>
+            <input type="number" class="col2" value="3" id="count" oninput="mkSubway()"/>
+            <p></p>
+        </div>
+        <div id="recipe">
+            <p class="col1">Vekt per deigball</p><p class="col2r" id="doughball_weight"></p>
+            <hr />
+            <p class="colboth" id="num_doughballs">Ingredienser for deigballer</p>
+            <hr />
+            <p class="col1">Siktet hvetemel</p><p class="col2r" id="ing_flour_fine"></p>
+            <hr />
+            <p class="col1">Havremel</p><p class="col2r" id="ing_flour_oat"></p>
+            <hr />
+            <p class="col1">Seitan (hvetegluten)</p><p class="col2r" id="ing_flour_vwg"></p>
+            <hr />
+            <p class="col1">Potetmospulver</p><p class="col2r" id="ing_potatomash"></p>
+            <hr />
+            <p class="col1">Vann</p><p class="col2r" id="ing_water"></p>
+            <hr />
+            <p class="col1">Salt</p><p class="col2r" id="ing_salt"></p>
+            <hr />
+            <p class="col1">Sukker</p><p class="col2r" id="ing_sugar"></p>
+            <hr />
+            <p class="col1">Eggeplomme</p><p class="col2r" id="ing_eggyolk"></p>
+            <hr />
+            <p class="col1">Fersk gj&aelig;r</p><p class="col2r" id="ing_yeast"></p>
+            <hr />
+            <p class="col1">Olje</p><p class="col2r" id="ing_oil"></p>
+            <p></p>
+        </div>
+        <br />
+        <div id="inputs">
+            <p class="colboth">Ingredienser</p>
+        </div>
+        <br />
+        <div id ="recipesteps">
+            <p>Hvetemel: Anbefaler Regal Proffserien Hvetemel Ekstra, evt vanlig siktet hvetemel.</p>
+            <p>Vann: Vannet må være iskaldt (maks 4°C) for at deigen ikke skal bli for varm under elting.</p>
+            <p>Gjær: Idun fersk blå.</p>
+            <p>Salt: Vanlig bordsalt. Med / uten jod har ingen betydning.</p>
+            <p>Sukker: Vanlig hvitt sukker.</p>
+            <p>Olje: Extra virgin olivenolje for ekstra smak, evt. nøytral matolje.</p>
+        </div>
+        <br />
+        <div id="inputs">
+            <p class="colboth">Fremgangsmåte</p>
+        </div>
+        <div id ="recipesteps">
+            <p>Mål opp alle ingredienser på forhånd. Bruk en nøyaktig kjøkkenvekt. Desimalvisning er viktig, ihvertfall for små deiger. Følg oppskriften nøyaktig, alle deler av fremgangsmåten samt rekkefølgen ting gjøres i er viktig. Bruk iskaldt vann (under 4 grader), sett evt vann i fryseren en stund hvis du ikke har. Når det fryser et lokk på vannet er det kaldt nok. </p>
+            <p>OBS: En del vann fordamper i fryseren, avkjøl vannet før du måler opp, og kjøl ned mer enn du trenger.</p>
+        </div>
+        <br />
+        <div id ="recipesteps">
+            <p>Bland lett sammen siktet hvetemel, havremel, seitan (hvetegluten) og potetmospulver i en egen bolle.</p>
+            <p>Ha vann, salt, sukker og eggeplomme i kjøkkenmaskinens bakebolle og bland lett med en visp eller gaffel.</p>
+        </div>
+        <div id ="recipesteps">
+            <p>Ha i mel- og potetmospulver-blandingen slik at det legger seg oppå væsken i bakebollen, men ikke bland sammen. Smuldre gjæren i små biter og strø det oppå melblandingen.</p>
+            <p>Start en stoppeklokke og start kjøkkenmaskinen (med eltekrok) på lav hastighet.</p>
+        </div>
+        <br />
+        <div id ="recipesteps">
+            <p>Når stoppeklokken har gått 1 minutt har du i oljen litt og litt. Ikke stopp kjøkkenmaskinen.</p>
+            <p>Når oljen er godt blandet i deigen økes hastigheten på kjøkkenmaskinen til middels hastighet.</p>
+        </div>
+        <br />
+
+        <div id ="recipesteps">
+            <p>Følg med under eltingen så ikke deigen kleber seg til kroken eller bollen, hjelp evt til litt slik at deigen eltes godt. Hvis maskinen tåler det kan du øke hastigheten så mye at deigen kastes av kroken, evt pulse maskinen på høyere hastighet.</p>
+            <p>Deigen skal eltes til stoppeklokka viser 15 - 20 minutter. Når en liten deigklump kan strekkes til å bli nesten gjennomsiktig uten å revne er deigen eltet nok.</p>
+        </div>
+        <br />
+        <div id ="recipesteps">
+            <p>Hvis du sliter med at deigen ikke vil bli til en deig og det bare blir en røre kan du holde igjen 1 - 2 spiseskjeer av vannet til å begynne med. Tilsett dette vannet etter at deigen har eltet i ca fem minutter. Det kan være du må hjelpe kjøkkenmaskinen litt for å få blandet inn det siste vannet.</p>
+            <p>En annen mulighet er å bytte ut litt av vannet med isbiter, det skal da brukes samme vekt med vann + isbiter som med bare vann. Isbitene vil smelte sakte under eltingen og slippe litt og litt vann, så unngår man problemet med at deigen blir for våt før den er eltet.</p>
+            <p>For å redde en deig du ikke får eltet, ta fire stykk "strekk og brett" (stretch and fold) med 15 minutters mellomrom før du setter deigen i kjøleskapet. Google hvis du ikke kjenner teknikken. Det går helt fint at deigen står totalt litt lenger i romtemperatur enn angitt i oppskriften.</p>
+        </div>
+        <br />
+        <div id ="recipesteps">
+            <p>Fortsett å la stoppeklokka gå når kjøkkenmaskinen er stoppet. Samle deigen i en ball i bollen og spray / pensle et tynt lag olje på.</p>
+            <p>Dekk bollen med plast og la den stå i romtemperatur til stoppeklokka viser 30 minutter.</p>
+        </div>
+        <br />
+        <div id ="recipesteps">
+            <p>Bruk litt olje eller mel for å unngå kliss og gris. Del opp deigen i emner av riktig vekt. Kjevl ned deigen til et avlangt rektangel med jevn bredde, ca like lang som stekeformen.</p>
+            <p>Rull deigen sammen til en pølse og spray eller pensle et tynt lag olje på.  Det er ingen krise om den blir litt for kort eller litt ujevn på dette stadiet. </p>
+        </div>
+        <br />
+        <div id ="recipesteps">
+            <p>Dekk de lett oljede deigrullene med plast og sett i kjøleskap. Deigen kan også oppbevares direkte i plastposer i kjøleskapet, når deigen er kald er den lett å få ut av posen uten kliss.</p>
+            <p>Deigen må stå minst 6 timer i kjøleskap og kan stå opptil 2 døgn.</p>
+        </div>
+        <br />
+        <div id ="recipesteps">
+            <p>Ta deigullene ut av kjøleskapet. Spray eller pensle stekeformene med olje, smør eller annet egnet stekefett.</p>
+            <p>Ha deigrullene oppi stekeformene og dekk med plast. La stå 30 - 40 minutter i romtemperatur.</p>
+        </div>
+        <br />
+        <div id ="recipesteps">
+            <p>Smør hendene med olje. Ta en og en deigrull og bruk samme bevegelse som når man starter bål med pinner for å lage deigrullene lenger og tynnere.</p>
+            <img src="img/stick_rub.png" width="202" height="233" />
+            <p>Begynn på midten av deigrullen, la den henge fritt nedover og kjør bevegelsen til du går "tom for deig". Snu rullen opp ned og kjør samme bevegelse igjen til deigen er jevnt tykk og litt lengre enn stekeformene.</p>
+        </div>
+        <br />
+        <div id ="recipesteps">
+            <p>Dekk stekeformene med plast, og la dem etterheve i romtemperatur i ca 2 timer. Sjekk jevnlig etter en time, hvis de begynner å vokse ut av formen må du få dem i ovnen.</p>
+            <p>Varm opp ovnen til 175 grader varmluft. Fyll en liten ildfast form med kokende vann som du setter i ovnen, dette gir litt dampeffekt.</p>
+        </div>
+        <br />
+        <div id ="recipesteps">
+            <p>Rett før steking kan brødene toppes. Bland sammen ca en toppet teskje finrevet parmesanost og en teskje tørket oregano per brød og dryss det jevnt over. Dryss videre over ca en toppet spiseskje revet mozzarella (Coop sin er best) eller annen god gratineringsost.</p>
+            <p>Brødene kan også toppes med f.eks. havregryn eller valmuefrø. Dette kan isåfall lønne seg å ha på før siste heving, slik at korn/frø fuktes litt av deigen og ikke blir brent i ovnen.</p>
+        </div>
+        <br />
+        <div id ="recipesteps">
+            <p>Stek i ca 15 minutter. Vil du være helt presis, stikk et steketermometer midt i et av brødene og stek til termometeret viser 88 grader.</p>
+            <p>Ta brødene ut av stekeformen og avkjøl på rist.</p>
+        </div>
+        <br />
+        <div id ="recipesteps">
+            <p>Snitt opp brødene langs kanten og åpne dem. Ta på ost og evt. kjøttpålegg og sett i airfryer i 3 - 5 minutter på 180 grader til osten er smeltet. Kan også bruke vanlig varmluftsovn i ca fem minutter på 180 grader.</p>
+            <p>Ha på ønskede kalde toppinger, sauser og krydder, brett sammen og spis.</p>
+        </div>
+    </body>
+</html>
