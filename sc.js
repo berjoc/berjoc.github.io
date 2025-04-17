@@ -193,9 +193,9 @@ function mkSubway(){
     var w_flour = 1.00;
     var w_potatomash = 0.07;
     var w_water = 0.75;
-    var w_salt = 0.02;
+    var w_salt = 0.018;
     var w_sugar = 0.06;
-    var w_yeast = 0.03;
+    var w_yeast = 0.026;
     var w_oil = 0.04;
     var w_eggyolk = 0.05;
 
