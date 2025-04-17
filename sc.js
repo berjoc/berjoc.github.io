@@ -32,7 +32,7 @@ function mkPizza(){
   var shape = e.options[e.selectedIndex].value;
   e = document.getElementById("edge");
   edge = e.options[e.selectedIndex].value;
-  var area = 1.2;
+  var area;
 
   if(shape == "round")
     {
@@ -192,7 +192,7 @@ function mkSubway(){
     // Ingredient weighting follows (in bakers percent, nominally flour is always 100% / 1.00)
     var w_flour = 1.00;
     var w_potatomash = 0.07;
-    var w_water = 0.73;
+    var w_water = 0.75;
     var w_salt = 0.02;
     var w_sugar = 0.06;
     var w_yeast = 0.03;
