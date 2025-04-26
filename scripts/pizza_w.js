@@ -66,7 +66,7 @@ function mkPizza(){
 
     // Ingredient weighting follows (in bakers percent, nominally flour is always 100% / 1.00)
     var w_flour = 1.00;
-    var w_water = 0.62;
+    var w_water = 0.6;
     var w_salt = 0.02;
     var w_sugar = 0.01;
 
@@ -88,7 +88,7 @@ function mkPizza(){
 
 
     var w_yeast = 0.023; // Try 0.02 - 0.027
-    var w_oil = 0.065;
+    var w_oil = 0.06;
     var w_egg = 0.14;
 
     var w_sum = w_flour + w_water + w_salt + w_sugar + w_yeast + w_oil + w_egg;
@@ -125,7 +125,7 @@ function mkPizza(){
     document.getElementById("ing_yeast").innerHTML = `${total_yeast.toFixed(1)} g`;
     document.getElementById("ing_oil").innerHTML = `${total_oil.toFixed(1)} g`;
     document.getElementById("ing_egg").innerHTML = `${total_egg.toFixed(1)} g`;
-    document.getElementById("ing_egg_shellapprox").innerHTML = `${(total_egg/0.9).toFixed(1)} g`;
+    document.getElementById("ing_egg_shellapprox").innerHTML = `${(total_egg/0.87).toFixed(1)} g`;
 
     document.getElementById("sauce_light").innerHTML = `${sauce_light.toFixed(0)} g`;
     document.getElementById("sauce_medium").innerHTML = `${sauce_medium.toFixed(0)} g`;
