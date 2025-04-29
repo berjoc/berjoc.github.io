@@ -211,7 +211,7 @@ function mkPizza(){
     document.getElementById("ing_sugar").innerHTML = `${total_sugar.toFixed(1)} g`;
     document.getElementById("ing_yeast").innerHTML = `${total_yeast.toFixed(1)} g`;
     document.getElementById("ing_oil").innerHTML = `${total_oil.toFixed(1)} g`;
-    document.getElementById("ing_egg").innerHTML = `${total_egg.toFixed(1)} g <em data-tooltip="ca ${(total_egg/0.87).toFixed(1)} g med skall" data-placement="right">(?)</em>`;
+    document.getElementById("ing_egg").innerHTML = `${total_egg.toFixed(1)} g <em data-placement="left" data-tooltip="ca ${(total_egg/0.87).toFixed(1)} g med skall" data-placement="right">(?)</em>`;
 
     document.getElementById("sauce_light").innerHTML = `${sauce_light.toFixed(0)} g`;
     document.getElementById("sauce_medium").innerHTML = `${sauce_medium.toFixed(0)} g`;
