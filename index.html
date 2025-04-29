@@ -1,15 +1,37 @@
-<html>
+<!doctype html>
+<html lang="no">
     <head>
         <meta charset="UTF-8">
         <title>JC's oppskrift samling</title>
-        <link rel="stylesheet" href="default.css" />
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="color-scheme" content="light dark">
+        <link rel="stylesheet" href="css/pico.min.css">
+        <style>
+             [data-tooltip]::before {
+                max-width: max(100%, 15rem);
+                width: max-content;
+                white-space: initial;
+                text-indent: 0;
+            }
+            [data-tooltip]:focus::after,
+            [data-tooltip]:focus::before {
+                opacity: 0;
+            }
+    
+            [data-tooltip]:hover::after,
+            [data-tooltip]:hover::before {
+                opacity: 1;
+            }
+        </style>
     </head>
     <body>
-        <h1>JC's Oppskrifter</h1>
-        <div id="inputs">            
-            <button onclick="window.location.href='pizza.html';" class="colboth">Norsk restaurantpizza</button>
-            <button onclick="window.location.href='subway.html';" class="colboth">Subway-type brød</button>
-            <p></p>
-        </div>
+        <main class="container">
+            <h1>JC's Oppskrifter</h1>
+            <section>            
+                <input type="button" onclick="window.location.href='pizza.html';" value="Norsk restaurantpizza" />
+                <input type="button" onclick="window.location.href='subway.html';"value="Subway-type brød" />
+            </section>
+            </main>
     </body>
 </html>
