@@ -21,7 +21,7 @@ function getCookie(cname) {
 }
 
 function checkCookie() {
-  let shape = getCookie("shape");
+  let shape = getCookie("idx_shape");
   if (shape != "") {
     return true;
   } 
@@ -33,31 +33,33 @@ function checkCookie() {
 function loadParams(){
 
   var e = document.getElementById("shape");
-  var shape = getCookie("shape");
-  e.options[e.selectedIndex].value = shape;
+  var shape = getCookie("idx_shape");
+  e.selectedIndex = shape;
 
   e = document.getElementById("edge");
-  var edge = getCookie("edge");
-  e.options[e.selectedIndex].value = edge;
+  var edge = getCookie("idx_edge");
+  e.selectedIndex = edge;
 
 
     document.getElementById("diameter").value = getCookie("diameter");
     document.getElementById("length").value = getCookie("length");
     document.getElementById("width").value = getCookie("width");
+    document.getElementById("count").value = getCookie("count");
 }
 
 function saveParams()
 {
   var e = document.getElementById("shape");
-  setCookie("shape", e.options[e.selectedIndex].value, 400);
+  setCookie("idx_shape", e.selectedIndex, 400);
 
 
   e = document.getElementById("edge");
-  setCookie("edge", e.options[e.selectedIndex].value, 400);
+  setCookie("idx_edge", e.selectedIndex, 400);
 
   setCookie("diameter", document.getElementById("diameter").value, 400);
   setCookie("length", document.getElementById("length").value, 400);
   setCookie("width", document.getElementById("width").value, 400);
+  setCookie("count", document.getElementById("count").value, 400);
 }
 
 function pizza_onLoad(){
