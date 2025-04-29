@@ -1,25 +1,19 @@
 <!doctype html>
-<html lang="en">
+<html lang="no">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="light dark">
     <link rel="stylesheet" href="css/pico.min.css">
+    <!-- 
+        Fix tooltips clipping offscreen on mobile
+    -->
     <style>
-         [data-tooltip]::before {
+        [data-tooltip]::before {
             max-width: max(100%, 15rem);
             width: max-content;
             white-space: initial;
             text-indent: 0;
-        }
-        [data-tooltip]:focus::after,
-        [data-tooltip]:focus::before {
-            opacity: 0;
-        }
-
-        [data-tooltip]:hover::after,
-        [data-tooltip]:hover::before {
-            opacity: 1;
         }
     </style>
     <script src="scripts/pizza.js"></script>
