@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="light dark">
     <link rel="stylesheet" href="css/pico.min.css">
+    <style>
+         [data-tooltip]::before {
+            max-width: max(100%, 15rem);
+            width: max-content;
+            white-space: initial;
+            text-indent: 0;
+        }
+    </style>
     <script src="scripts/pizza.js"></script>
     <title>Norsk restaurantpizza</title>
   </head>
@@ -33,7 +41,7 @@
             <small id="warn_slant">Viktig: Mål på bunnen / undersiden av formen.</small>
 
 
-            <label for="sugar_amount">Sukkermengde<em data-tooltip="Kan brukes for å gi brunere stekeresultat. Anbefales hvis du ikke har pizzastål/stein." data-placement="right">🛈</label>
+            <label for="sugar_amount">Sukkermengde<em data-tooltip="Kan brukes for å gi brunere stekeresultat. Anbefales hvis du ikke har pizzastål/stein." data-placement="right">(?)</label>
             <select id="sugar_amount"  onchange="mkPizza()">
                 <option value="none">Ingen</option>
                 <option value="normal">Litt</option>
@@ -91,27 +99,27 @@
                         <th scope="row" colspan="2">Anbefalte mengder topping (per pizza)</th>
                     </tr>
                     <tr>
-                        <th scope="row">Saus (lite)<em data-tooltip="Gir mindre tydelig sauspreg uten at pizzaen blir tørr." data-placement="right">🛈</em></th>
+                        <th scope="row">Saus (lite)<em data-tooltip="Gir mindre tydelig sauspreg uten at pizzaen blir tørr." data-placement="right">(?)</em></th>
                         <td id="sauce_light" style="text-align: right;">0</td>
                     </tr>
                     <tr>
-                        <th scope="row">Saus (medium)<em data-tooltip="En rikelig mengde saus, uten at sausen blir for dominerende." data-placement="right">🛈</em></th>
+                        <th scope="row">Saus (medium)<em data-tooltip="En rikelig mengde saus, uten at sausen blir for dominerende." data-placement="right">(?)</em></th>
                         <td id="sauce_medium" style="text-align: right;">0</td>
                     </tr>
                     <tr>
-                        <th scope="row">Saus (ekstra mye)<em data-tooltip="Gir en meget sausete pizza, sausen drypper på tallerken." data-placement="right">🛈</em></th>
+                        <th scope="row">Saus (ekstra mye)<em data-tooltip="Gir en meget sausete pizza, sausen drypper på tallerken." data-placement="right">(?)</em></th>
                         <td id="sauce_heavy" style="text-align: right;">0</td>
                     </tr>
                     <tr>
-                        <th scope="row">Ost (lite)<em data-tooltip="En sparsom mengde ost, uten at det blir for lite." data-placement="right">🛈</em></th>
+                        <th scope="row">Ost (lite)<em data-tooltip="En sparsom mengde ost, uten at det blir for lite." data-placement="right">(?)</em></th>
                         <td id="cheese_light" style="text-align: right;">0</td>
                     </tr>
                     <tr>
-                        <th scope="row">Ost (medium)<em data-tooltip="En rikelig mengde ost, uten at pizzaen blir for tung." data-placement="right">🛈</em></th>
+                        <th scope="row">Ost (medium)<em data-tooltip="En rikelig mengde ost, uten at pizzaen blir for tung." data-placement="right">(?)</em></th>
                         <td id="cheese_medium" style="text-align: right;">0</td>
                     </tr>
                     <tr>
-                        <th scope="row">Ost (ekstra mye)<em data-tooltip="Mest mulig ost. Ta det rolig med sausmengde og vannholdige toppinger for å unngå problemer med rå pizza etter steking." data-placement="right">🛈</em></th>
+                        <th scope="row">Ost (ekstra mye)<em data-tooltip="Mest mulig ost. Ta det rolig med sausmengde og vannholdige toppinger for å unngå problemer med rå pizza etter steking." data-placement="right">(?)</em></th>
                         <td id="cheese_heavy" style="text-align: right;">0</td>
                     </tr>
                 </tfoot>
