@@ -148,7 +148,9 @@ function mkfoccacia(){
     var total_dough_weight = doughball_weight * count * extra_dough;
 
     // Ingredient weighting follows (in bakers percent, nominally flour is always 100% / 1.00)
-    var w_flour = 1.00;
+    var w_vwg = 0.05;
+    var w_flour = 0.95;
+    
     var w_water = 0.8;
     var w_salt = 0.02;
 
@@ -159,8 +161,9 @@ function mkfoccacia(){
     var w_yeast = 0.027; // Try 0.02 - 0.027
     var w_oil = 0.04;
 
-    var w_sum = w_flour + w_water + w_salt + w_yeast + w_oil;
+    var w_sum = w_vwg + w_flour + w_water + w_salt + w_yeast + w_oil;
 
+    var total_vwg = w_vwg * total_dough_weight / w_sum;
     var total_flour = w_flour * total_dough_weight / w_sum;
     var total_water = w_water * total_dough_weight / w_sum;
     var total_salt = w_salt * total_dough_weight / w_sum;
@@ -170,6 +173,7 @@ function mkfoccacia(){
     document.getElementById("doughball_weight").innerHTML = `${doughball_weight.toFixed(1)} g`;
     document.getElementById("num_doughballs").innerHTML = `${count.toFixed(0)}`;
 
+    document.getElementById("ing_wvg").innerHTML = `${total_vwg.toFixed(1)} g`;
     document.getElementById("ing_flour").innerHTML = `${total_flour.toFixed(1)} g`;
     document.getElementById("ing_water").innerHTML = `${total_water.toFixed(1)} g`;
     document.getElementById("ing_salt").innerHTML = `${total_salt.toFixed(1)} g`;
