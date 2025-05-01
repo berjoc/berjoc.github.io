@@ -173,7 +173,7 @@ function mkfoccacia(){
     document.getElementById("doughball_weight").innerHTML = `${doughball_weight.toFixed(1)} g`;
     document.getElementById("num_doughballs").innerHTML = `${count.toFixed(0)}`;
 
-    document.getElementById("ing_wvg").innerHTML = `${total_vwg.toFixed(1)} g`;
+    document.getElementById("ing_vwg").innerHTML = `${total_vwg.toFixed(1)} g`;
     document.getElementById("ing_flour").innerHTML = `${total_flour.toFixed(1)} g`;
     document.getElementById("ing_water").innerHTML = `${total_water.toFixed(1)} g`;
     document.getElementById("ing_salt").innerHTML = `${total_salt.toFixed(1)} g`;
