@@ -23,7 +23,7 @@ function getCookie(cname) {
 }
 
 function checkCookie() {
-  let shape = getCookie("idx_shape");
+  let shape = getCookie("egg_adj_toggle");
   if (shape != "") {
     return true;
   } 
@@ -44,10 +44,19 @@ function loadParams(){
   e.selectedIndex = edge;
 
 
-    document.getElementById("diameter").value = getCookie("diameter");
-    document.getElementById("length").value = getCookie("length");
-    document.getElementById("width").value = getCookie("width");
-    document.getElementById("count").value = getCookie("count");
+  document.getElementById("diameter").value = getCookie("diameter");
+  document.getElementById("length").value = getCookie("length");
+  document.getElementById("width").value = getCookie("width");
+  document.getElementById("count").value = getCookie("count");
+
+  var egg_adj = getCookie("egg_adj_toggle");
+  if(egg_adj == "true")
+  {
+    e = document.getElementById("egg_adj_toggle");
+    e.checked = true;
+    document.getElementById("egg_adj_amt").value = getCookie("egg_adj_amt");
+  }
+
 }
 
 function saveParams()
@@ -63,6 +72,17 @@ function saveParams()
   setCookie("length", document.getElementById("length").value, 400);
   setCookie("width", document.getElementById("width").value, 400);
   setCookie("count", document.getElementById("count").value, 400);
+
+  e = document.getElementById("egg_adj_toggle");
+  if(e.checked == true)
+  {
+    setCookie("egg_adj_toggle", "true", 400);
+  }
+  else
+  {
+    setCookie("egg_adj_toggle", "false", 400);
+  }
+  setCookie("egg_adj_amt", document.getElementById("egg_adj_amt").value, 400);
 }
 
 function pizza_onLoad(){
@@ -74,6 +94,11 @@ function pizza_onLoad(){
   //document.getElementById("recipe").style.display = 'none';
 }
 
+function pizza_enableEggAdj()
+{
+  document.getElementById("egg_adj_amt").value =`${total_egg.toFixed(1)}`;
+  pizza_changeShape();
+}
 function pizza_changeShape() {
     var e = document.getElementById("shape");
     var value = e.options[e.selectedIndex].value;
@@ -96,7 +121,6 @@ function pizza_changeShape() {
       document.getElementById("width").style.display = '';
     
     }
-    // warn_slant
     e = document.getElementById("edge");
     var edge = e.options[e.selectedIndex].value;
     if(edge == "slanted")
@@ -108,8 +132,24 @@ function pizza_changeShape() {
       document.getElementById("warn_slant").style.display = 'none';
     }
 
+    e = document.getElementById("egg_adj_toggle");
+    if(e.checked == false)
+    {
+      document.getElementById("lbl_egg_adj_amt").style.display = 'none';
+      document.getElementById("warn_egg_adj_amt").style.display = 'none';
+      document.getElementById("egg_adj_amt").style.display = 'none';
+    }
+    else
+    {
+      document.getElementById("lbl_egg_adj_amt").style.display = '';
+      document.getElementById("warn_egg_adj_amt").style.display = '';
+      document.getElementById("egg_adj_amt").style.display = '';
+    }
+
     mkPizza();
 }
+
+var total_egg;
 
 function mkPizza(){
   var e = document.getElementById("shape");
@@ -189,7 +229,23 @@ function mkPizza(){
     var total_sugar = w_sugar * total_dough_weight / w_sum;
     var total_yeast = w_yeast * total_dough_weight / w_sum;
     var total_oil = w_oil * total_dough_weight / w_sum;
-    var total_egg = w_egg * total_dough_weight / w_sum;
+    total_egg = w_egg * total_dough_weight / w_sum;
+
+    if(document.getElementById("egg_adj_toggle").checked == true)
+    {
+      var exact_egg =  parseFloat(document.getElementById("egg_adj_amt").value);
+
+      var egg_diff = total_egg - exact_egg;
+      var add_water = 0.76 * egg_diff;
+      var add_oil = 0.105 * egg_diff;
+      //var add_flour = 0.135 * egg_diff; // Maybe not quite correct to add flour in lieu of egg dry matter but it will keep dough weight from messing up
+
+      total_water = total_water + add_water;
+      total_oil = total_oil + add_oil;
+      //total_flour = total_flour + add_flour;
+      total_egg = exact_egg;
+
+    }
 
     var sauce_light = 0.11644 * area;
     var sauce_medium = sauce_light * 1.3334;
@@ -219,6 +275,14 @@ function mkPizza(){
     document.getElementById("cheese_light").innerHTML = `${cheese_light.toFixed(0)} g (${(2.0*cheese_light/3.0).toFixed(0)} g mozzarella, ${(cheese_light/3.0).toFixed(0)} g annen ost)`;
     document.getElementById("cheese_medium").innerHTML = `${cheese_medium.toFixed(0)} g (${(2.0*cheese_medium/3.0).toFixed(0)} g mozzarella, ${(cheese_medium/3.0).toFixed(0)} g annen ost)`;
     document.getElementById("cheese_heavy").innerHTML = `${cheese_heavy.toFixed(0)} g (${(2.0*cheese_heavy/3.0).toFixed(0)} g mozzarella, ${(cheese_heavy/3.0).toFixed(0)} g annen ost)`;
+
+    var hydration = (total_water + 0.76 * total_egg) / total_flour;
+    var fat_percent = (total_oil + 0.105 * total_egg) / total_flour;
+    var fluid_percent = hydration + fat_percent;
+
+    document.getElementById("hydration").innerHTML = `${(100*hydration).toFixed(1)} %`;
+    document.getElementById("fat_percent").innerHTML = `${(100*fat_percent).toFixed(1)} %`;
+    document.getElementById("fluid_percent").innerHTML = `${(100*fluid_percent).toFixed(1)} %`;
 
     saveParams();
 }
