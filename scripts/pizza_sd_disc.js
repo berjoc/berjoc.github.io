@@ -43,7 +43,6 @@ function loadParams(){
   var edge = getCookie("idx_edge");
   e.selectedIndex = edge;
 
-
   document.getElementById("diameter").value = getCookie("diameter");
   document.getElementById("length").value = getCookie("length");
   document.getElementById("width").value = getCookie("width");
@@ -90,18 +89,21 @@ function pizza_onLoad(){
   {
     loadParams();
   }
-  pizza_changeShape();
+  pizza_changeParams();
   //document.getElementById("recipe").style.display = 'none';
 }
 
+// Copies correct egg weight into adjusted weight input field on egg adjustment enabled
 function pizza_enableEggAdj()
 {
   document.getElementById("egg_adj_amt").value =`${total_egg.toFixed(1)}`;
-  pizza_changeShape();
+  pizza_changeParams();
 }
-function pizza_changeShape() {
+
+function pizza_changeParams() {
     var e = document.getElementById("shape");
     var value = e.options[e.selectedIndex].value;
+
     if(value == "round")
     {
         document.getElementById("lbl_diameter").style.display = '';
@@ -121,6 +123,7 @@ function pizza_changeShape() {
       document.getElementById("width").style.display = '';
     
     }
+
     e = document.getElementById("edge");
     var edge = e.options[e.selectedIndex].value;
     if(edge == "slanted")
@@ -131,6 +134,7 @@ function pizza_changeShape() {
     {
       document.getElementById("warn_slant").style.display = 'none';
     }
+
 
     e = document.getElementById("egg_adj_toggle");
     if(e.checked == false)
