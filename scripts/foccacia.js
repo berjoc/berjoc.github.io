@@ -143,28 +143,30 @@ function mkfoccacia(){
     var density = 0.8; // Density of dough in grams per sq cm (default 0.8)
     var doughball_weight = density * area;
     var count = parseFloat(document.getElementById("count").value); 
-    var extra_dough = 1.05; // Add a little extra for dough lost to stickiness etc. This is a very wet dough
+    var extra_dough = 1.03; // Add a little extra for dough lost to stickiness etc. This is a very wet dough
 
     var total_dough_weight = doughball_weight * count * extra_dough;
 
     // Ingredient weighting follows (in bakers percent, nominally flour is always 100% / 1.00)
     var w_vwg = 0.05;
-    var w_flour = 0.95;
-    
-    var w_water = 0.8;
+    var w_flour = 0.807;
+    var w_sd_disc = 0.286;
+
+    var w_water = 0.65;
     var w_salt = 0.02;
 
     // There used to be code for sugar amount etc. here
 
 
 
-    var w_yeast = 0.027; // Try 0.02 - 0.027
+    var w_yeast = 0.025; // Try 0.02 - 0.027
     var w_oil = 0.04;
 
-    var w_sum = w_vwg + w_flour + w_water + w_salt + w_yeast + w_oil;
+    var w_sum = w_vwg + w_sd_disc + w_flour + w_water + w_salt + w_yeast + w_oil;
 
     var total_vwg = w_vwg * total_dough_weight / w_sum;
     var total_flour = w_flour * total_dough_weight / w_sum;
+    var total_sd_disc = w_sd_disc * total_dough_weight / w_sum;
     var total_water = w_water * total_dough_weight / w_sum;
     var total_salt = w_salt * total_dough_weight / w_sum;
     var total_yeast = w_yeast * total_dough_weight / w_sum;
@@ -175,6 +177,7 @@ function mkfoccacia(){
 
     document.getElementById("ing_vwg").innerHTML = `${total_vwg.toFixed(1)} g`;
     document.getElementById("ing_flour").innerHTML = `${total_flour.toFixed(1)} g`;
+    document.getElementById("ing_sd_disc").innerHTML = `${total_sd_disc.toFixed(1)} g`;
     document.getElementById("ing_water").innerHTML = `${total_water.toFixed(1)} g`;
     document.getElementById("ing_salt").innerHTML = `${total_salt.toFixed(1)} g`;
     document.getElementById("ing_yeast").innerHTML = `${total_yeast.toFixed(1)} g`;
