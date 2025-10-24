@@ -194,7 +194,7 @@ function mkPizza(){
     // Ingredient weighting follows (in bakers percent, nominally flour is always 100% / 1.00)
     var w_flour = 0.857;
     var w_sd_disc = 0.286;
-    var w_water = 0.457;
+    var w_water = 0.431;
     var w_salt = 0.02;
     var w_sugar = 0.01;
 
